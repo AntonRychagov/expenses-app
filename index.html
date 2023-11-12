@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style/reset.css" />
+    <link rel="stylesheet" href="/style/style.css" />
+    <link rel="stylesheet" href="/style/popup.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Inter:wght@400;700&family=Manrope:wght@400;700&family=Ubuntu:wght@300;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Expenses app</title>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1 class="header__title">Учет расходов</h1>
+      </div>
+    </header>
+    <main>
+      <div class="container">
+        <div class="interactive">
+          <div class="interactive__inner">
+            <input
+              id="input"
+              class="input"
+              type="number"
+              placeholder="Введите сумму ₽"
+            />
+            <select id="taskSelect" name="plan" class="select">
+              <option value="Транспорт">Транспорт</option>
+              <option value="Кафе и рестораны">Кафе и рестораны</option>
+              <option value="Аптека">Аптека</option>
+              <option value="Развлечения">Развлечения</option>
+            </select>
+          </div>
+          <button id="button" class="btn">Добавить</button>
+        </div>
+
+        <div class="history__wrapper">
+          <div class="history__inner">
+            <div class="history__limit">
+              <p class="title__limit">Лимит : <span id="limit">₽</span></p>
+              <img
+                id="imgLimit"
+                class="img__limit"
+                src="./resources/record.png"
+                alt=""
+              />
+            </div>
+            <div class="sum">
+              <p class="title__sum">Всего : <span id="sum">0 ₽</span></p>
+            </div>
+            <div class="status">
+              <p class="title__status">
+                Статус : <span id="status" class="status__green"></span>
+              </p>
+            </div>
+            <button id="clearBtn" class="clear__btn">Сбросить расходы</button>
+          </div>
+
+          <div class="history">
+            <h2 class="history__title">История :</h2>
+            <div id="history"></div>
+          </div>
+        </div>
+      </div>
+      <div id="popup" class="popup">
+        <div class="container">
+          <div class="popup__inner">
+            <div class="popup__wrapper">
+              <p class="popup__title">Новый лимит</p>
+              <img
+                id="imgPopupCross"
+                class="popup__cross"
+                src="./resources/cross.png"
+                alt=""
+              />
+            </div>
+            <div class="popup__box">
+              <input
+                id="inputNewLimit"
+                class="popup__input"
+                type="number"
+                placeholder="Введите лимит ₽"
+              />
+              <button id="btnNewLimit" class="popup__btn">Задайте лимит</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

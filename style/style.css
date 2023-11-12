@@ -1,0 +1,134 @@
+body {
+  font-family: Ubuntu;
+  background-color: rgb(188, 190, 194);
+}
+
+p {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.container {
+  max-width: 470px;
+  margin: 0 auto;
+}
+
+.header__title {
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 37px;
+  padding-top: 40px;
+  margin-bottom: 40px;
+  align-items: center;
+}
+
+.interactive {
+  display: flex;
+  gap: 50px;
+  margin-bottom: 30px;
+}
+
+.interactive__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.input {
+  max-width: 135px;
+  padding: 10px;
+  outline: 0;
+  border-radius: 11px;
+  border-color: black;
+}
+
+.select {
+  max-width: 160px;
+  box-sizing: border-box;
+  padding: 10px;
+  outline: 0;
+  border-radius: 11px;
+  border-color: black;
+}
+
+.btn {
+  width: 140px;
+  height: 38px;
+  padding: 0;
+  border-radius: 11px;
+  border: none;
+  font: inherit;
+  color: white;
+  background-color: #0094fe;
+  cursor: pointer;
+}
+
+.history__wrapper {
+  display: flex;
+  gap: 70px;
+}
+
+.history__inner {
+  max-width: 190px;
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+
+.history__limit {
+  display: flex;
+  gap: 8px;
+}
+
+.img__limit {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+
+.status__green {
+  text-transform: uppercase;
+  color: green;
+}
+
+.status__red {
+  color: red;
+}
+
+.clear__btn {
+  width: 174px;
+  color: white;
+  background-color: rgba(255, 0, 0, 1);
+  padding: 10px;
+  border-radius: 11px;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+}
+
+.history {
+  display: flex;
+  flex-direction: column;
+}
+
+.history__title {
+  font-weight: bold;
+  font-size: 15px;
+  margin-bottom: 15px;
+}
+
+.history__list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.history__item {
+  list-style-type: decimal;
+  list-style-position: inside;
+}
