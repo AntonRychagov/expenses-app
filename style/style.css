@@ -132,3 +132,20 @@ input::-webkit-inner-spin-button {
   list-style-type: decimal;
   list-style-position: inside;
 }
+
+
+@media (max-width: 540px) {
+  .container {
+    width: 100%;;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .interactive {
+    gap: 30px;
+  }
+
+  .history__wrapper{
+    gap: 50px;
+  }
+}
