@@ -30,6 +30,7 @@ popupCrossNode.addEventListener("click", togglePopup);
 btnNewLimitNode.addEventListener("click", newLimitSum);
 btnNewLimitNode.addEventListener("click", crossBtn);
 btnNewLimitNode.addEventListener("click", clearNewInput);
+btnNewLimitNode.addEventListener("click", reset);
 
 //// ФУНКЦИИ ////
 
@@ -48,15 +49,11 @@ function getValueInput() {
 
   render();
 
-  // renderHistory(); // вывод список трат
-
-  // resultSum(); // считатет сумму трат и проверяет статус
-
   clearInput(); // очищает поле ввода
 }
 
 //функция сохраняет значения
-function setExpenses() {
+const setExpenses = () => {
   const expense = getExpenseFromUser();
   const type = getExpenseTypeFromUser();
 
@@ -70,11 +67,11 @@ function setExpenses() {
   });
 
   return;
-}
+};
 
-function getExpenses() {
+const getExpenses = () => {
   return expenses;
-}
+};
 
 //функция выводит список трат
 const renderHistory = () => {
@@ -87,7 +84,7 @@ const renderHistory = () => {
   });
 
   historyNode.innerHTML = `<ol class='history__list'>${expensesListHTML}</ol>`;
-}
+};
 
 //функция считает сумму трат
 const resultSum = () => {
@@ -98,7 +95,7 @@ const resultSum = () => {
   });
 
   return sum;
-}
+};
 
 //  проверка статуса лимита
 const compareLimit = () => {
@@ -109,22 +106,25 @@ const compareLimit = () => {
   if (total <= LIMIT) {
     statusNode.innerHTML = STATUS_IN_LIMIT;
   } else {
-    statusNode.innerHTML = `${STATUS_OUT_OF_LIMIT} (${total - LIMIT} ${CURRENCY})`;
+    statusNode.innerHTML = `${STATUS_OUT_OF_LIMIT} (${
+      total - LIMIT
+    } ${CURRENCY})`;
     statusNode.classList.add(STATUS_OUT_OF_LIMIT_CLASSNAME);
   }
-
-}
+};
 
 const render = () => {
   compareLimit();
   renderHistory();
-}
-
+};
 
 //функция создает новый лимит и выводит user
 function newLimitSum() {
+  if (inputNewLimitNode.value === "") {
+    return;
+  }
   const NEW_LIMIT = parseInt(inputNewLimitNode.value);
-  limitNode.innerText = NEW_LIMIT;
+  limitNode.innerText = `${NEW_LIMIT} ${CURRENCY}`;
   LIMIT = NEW_LIMIT;
 }
 
@@ -134,11 +134,6 @@ function crossBtn() {
 
 function clearNewInput() {
   inputNewLimitNode.value = "";
-}
-
-//функция очищает поле ввода, после клика по кнопке(добавить)
-function clearInput() {
-  inputNode.value = "";
 }
 
 init();
@@ -161,35 +156,47 @@ function clearAll() {
 
   clearStatus();
 
-  render();
-
   return;
 }
 
+//функция очищает поле ввода, после клика по кнопке(добавить)
+const clearInput = () => {
+  inputNode.value = "";
+};
+
 //функция ошищает историю и массив
-function clearHistory() {
+const clearHistory = () => {
   historyNode.innerText = "";
   expenses = [];
-}
+};
 
 // функция возвращает дефолтное значение лимита
-function clearLimit() {
+const clearLimit = () => {
   LIMIT = 10000;
   limitNode.innerText = `${LIMIT} ${CURRENCY}`;
-}
+};
 
 //функция возвращает начальное значение (Всего:)
-function clearSum() {
+const clearSum = () => {
   sumNode.innerText = `${ZERO} ${CURRENCY}`;
-}
+};
 
 //функция возвращает статус 'Все хорошо'
-function clearStatus() {
+const clearStatus = () => {
   statusNode.innerText = STATUS_IN_LIMIT;
   statusNode.classList.remove(STATUS_OUT_OF_LIMIT_CLASSNAME);
-}
+};
 
 // функция открывет и закрывает popup
 function togglePopup() {
   popupNode.classList.toggle(POPUP_OPENED_CLASSNAME);
+}
+
+function reset() {
+  
+  clearHistory();
+
+  clearSum();
+
+  clearStatus();
 }
