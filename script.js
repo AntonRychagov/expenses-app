@@ -24,6 +24,7 @@ let expenses = [];
 
 //// ОБРАБОТЧИКИ ////
 buttonNode.addEventListener("click", getValueInput);
+buttonNode.addEventListener("click", clearInput);
 clearButtonNode.addEventListener("click", clearAll);
 imgLimitNode.addEventListener("click", togglePopup);
 popupCrossNode.addEventListener("click", togglePopup);
@@ -47,9 +48,7 @@ function getValueInput() {
 
   setExpenses(); // сохраняет значение и добавляет в массив
 
-  render();
-
-  clearInput(); // очищает поле ввода
+  render(); // выводит данные user
 }
 
 //функция сохраняет значения
@@ -160,7 +159,7 @@ function clearAll() {
 }
 
 //функция очищает поле ввода, после клика по кнопке(добавить)
-const clearInput = () => {
+function clearInput() {
   inputNode.value = "";
 };
 
@@ -193,7 +192,6 @@ function togglePopup() {
 }
 
 function reset() {
-  
   clearHistory();
 
   clearSum();
