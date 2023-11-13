@@ -1,6 +1,7 @@
 let LIMIT = 10000;
 const ZERO = 0;
 const CURRENCY = "₽";
+const MINUS = '-'
 const STATUS_IN_LIMIT = "все хорошо";
 const STATUS_OUT_OF_LIMIT = "все плохо";
 const STATUS_OUT_OF_LIMIT_CLASSNAME = "status__red";
@@ -105,7 +106,7 @@ const compareLimit = () => {
   if (total <= LIMIT) {
     statusNode.innerHTML = STATUS_IN_LIMIT;
   } else {
-    statusNode.innerHTML = `${STATUS_OUT_OF_LIMIT} (${
+    statusNode.innerHTML = `${STATUS_OUT_OF_LIMIT} <br> (${MINUS} ${
       total - LIMIT
     } ${CURRENCY})`;
     statusNode.classList.add(STATUS_OUT_OF_LIMIT_CLASSNAME);
@@ -138,13 +139,17 @@ function clearNewInput() {
 init();
 
 function init(expenses) {
+  inputNode.focus()
   statusNode.innerText = STATUS_IN_LIMIT;
   limitNode.innerText = `${LIMIT} ${CURRENCY}`;
   sumNode.innerText = resultSum(expenses);
+  sumNode.innerText = `${ZERO} ${CURRENCY}`
 }
 
 //итоговая функция очистки
 function clearAll() {
+  inputNode.focus();
+
   clearInput();
 
   clearHistory();
@@ -171,7 +176,7 @@ const clearHistory = () => {
 
 // функция возвращает дефолтное значение лимита
 const clearLimit = () => {
-  LIMIT = 10000;
+  LIMIT = LIMIT;
   limitNode.innerText = `${LIMIT} ${CURRENCY}`;
 };
 
@@ -192,9 +197,5 @@ function togglePopup() {
 }
 
 function reset() {
-  clearHistory();
-
-  clearSum();
-
   clearStatus();
 }
