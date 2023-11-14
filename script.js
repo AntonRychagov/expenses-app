@@ -1,7 +1,7 @@
 let LIMIT = 10000;
 const ZERO = 0;
 const CURRENCY = "₽";
-const MINUS = '-'
+const MINUS = "-";
 const STATUS_IN_LIMIT = "все хорошо";
 const STATUS_OUT_OF_LIMIT = "все плохо";
 const STATUS_OUT_OF_LIMIT_CLASSNAME = "status__red";
@@ -33,6 +33,7 @@ btnNewLimitNode.addEventListener("click", newLimitSum);
 btnNewLimitNode.addEventListener("click", crossBtn);
 btnNewLimitNode.addEventListener("click", clearNewInput);
 btnNewLimitNode.addEventListener("click", reset);
+btnNewLimitNode.addEventListener("click", compareNewLimit);
 
 //// ФУНКЦИИ ////
 
@@ -111,6 +112,7 @@ const compareLimit = () => {
     } ${CURRENCY})`;
     statusNode.classList.add(STATUS_OUT_OF_LIMIT_CLASSNAME);
   }
+  return;
 };
 
 const render = () => {
@@ -139,11 +141,11 @@ function clearNewInput() {
 init();
 
 function init(expenses) {
-  inputNode.focus()
+  inputNode.focus();
   statusNode.innerText = STATUS_IN_LIMIT;
   limitNode.innerText = `${LIMIT} ${CURRENCY}`;
   sumNode.innerText = resultSum(expenses);
-  sumNode.innerText = `${ZERO} ${CURRENCY}`
+  sumNode.innerText = `${ZERO} ${CURRENCY}`;
 }
 
 //итоговая функция очистки
@@ -166,7 +168,7 @@ function clearAll() {
 //функция очищает поле ввода, после клика по кнопке(добавить)
 function clearInput() {
   inputNode.value = "";
-};
+}
 
 //функция ошищает историю и массив
 const clearHistory = () => {
@@ -198,4 +200,18 @@ function togglePopup() {
 
 function reset() {
   clearStatus();
+}
+
+function compareNewLimit() {
+  const total = resultSum();
+
+  sumNode.innerText = `${total} ${CURRENCY}`;
+
+  if (LIMIT < total) {
+    statusNode.innerText = STATUS_OUT_OF_LIMIT;
+    statusNode.classList.add(STATUS_OUT_OF_LIMIT_CLASSNAME);
+  } else {
+    statusNode.innerText = STATUS_IN_LIMIT;
+    statusNode.classList.remove(STATUS_OUT_OF_LIMIT_CLASSNAME);
+  }
 }
